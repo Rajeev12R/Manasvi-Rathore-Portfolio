@@ -12,14 +12,18 @@ export function AboutMe() {
       <div className="container px-4 md:px-6">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center justify-center">
           <div className="space-y-6 slide-up">
-            <span className="block text-sm font-medium uppercase tracking-wider text-primary font-body text-center lg:text-left">
+            <span className="block text-sm text-pink uppercase tracking-widest text-center lg:text-left">
               About Me
             </span>
-            <h2 className="text-3xl font-heading font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl text-center lg:text-left">
+            <h2 className="text-3xl text-luxury-heading mb-2 tracking-wider text-center lg:text-left">
               Driven by Storytelling
             </h2>
+            <div
+              className="luxury-divider"
+              style={{ background: "var(--color-peach)" }}
+            ></div>
             <p
-              className="text-muted-foreground md:text-lg font-body text-center lg:text-left leading-relaxed"
+              className="text-luxury-muted md:text-lg font-body text-center lg:text-left leading-relaxed"
               style={{ animationDelay: "0.1s" }}
             >
               I'm Manasvi Rathore, a media student passionate about journalism
@@ -27,22 +31,20 @@ export function AboutMe() {
               content creation, and understanding the dynamic media landscape.
             </p>
             <p
-              className="text-muted-foreground md:text-lg font-body text-center lg:text-left leading-relaxed"
+              className="text-luxury-muted md:text-lg font-body text-center lg:text-left leading-relaxed"
               style={{ animationDelay: "0.2s" }}
             >
               Eager to learn and adapt, I aim to contribute meaningful
               narratives in today's evolving industry.
             </p>
-            <div className="flex justify-center lg:justify-start">
+            <div className="flex justify-center lg:justify-start mt-4">
               <Button
                 asChild
                 variant="outline"
-                className="border-primary text-primary hover:bg-primary/10 transition-colors font-body"
+                className="bg-[#e75480] text-white hover:bg-[#d13c6a] transition-colors font-heading font-bold uppercase tracking-widest rounded-full px-6 py-3 shadow-md border-none"
                 style={{ animationDelay: "0.3s" }}
               >
-                <Link href="/about">
-                  Learn More About Me <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
+                <Link href="/about">Know More About Me</Link>
               </Button>
             </div>
           </div>

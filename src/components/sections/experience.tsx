@@ -79,13 +79,17 @@ export function Experience() {
         <div className="flex flex-col items-center justify-center space-y-3 text-center mb-8">
           <Briefcase className="h-12 w-12 text-primary mb-2 slide-up" />
           <h2
-            className="text-3xl font-heading font-bold tracking-tighter text-foreground sm:text-4xl md:text-5xl slide-up"
+            className="text-3xl text-luxury-heading mb-2 tracking-wider text-center slide-up"
             style={{ animationDelay: "0.1s" }}
           >
             Professional Experience
           </h2>
+          <div
+            className="luxury-divider"
+            style={{ background: "var(--color-peach)" }}
+          ></div>
           <p
-            className="max-w-[900px] text-muted-foreground md:text-xl lg:text-base xl:text-xl slide-up font-body"
+            className="max-w-[900px] text-luxury-muted md:text-xl lg:text-base xl:text-xl slide-up font-body text-center font-medium"
             style={{ animationDelay: "0.2s" }}
           >
             Gaining practical insights and skills through internships and

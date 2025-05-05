@@ -58,13 +58,17 @@ export function Contact() {
         <div className="flex flex-col items-center justify-center space-y-3 text-center mb-8">
           <Mail className="h-12 w-12 text-primary mb-2 slide-up" />
           <h2
-            className="text-3xl font-heading font-bold tracking-tighter text-foreground sm:text-4xl md:text-5xl slide-up"
+            className="text-3xl text-luxury-heading mb-2 tracking-wider text-center slide-up"
             style={{ animationDelay: "0.1s" }}
           >
             Get In Touch
           </h2>
+          <div
+            className="luxury-divider"
+            style={{ background: "var(--color-peach)" }}
+          ></div>
           <p
-            className="max-w-[900px] text-muted-foreground md:text-xl lg:text-base xl:text-xl slide-up font-body"
+            className="max-w-[900px] text-luxury-muted md:text-xl lg:text-base xl:text-xl slide-up font-body text-center font-medium"
             style={{ animationDelay: "0.2s" }}
           >
             Whether you have a question, a collaboration idea, or just want to
@@ -80,10 +84,10 @@ export function Contact() {
             style={{ animationDelay: "0.3s" }}
           >
             <CardHeader>
-              <CardTitle className="text-2xl font-heading text-foreground">
+              <CardTitle className="text-2xl font-heading font-bold uppercase tracking-widest text-heading text-center md:text-left">
                 Send a Direct Message
               </CardTitle>
-              <CardDescription className="text-muted-foreground font-body">
+              <CardDescription className="text-muted-foreground font-body font-medium">
                 Fill out the form below, and I'll respond promptly.
               </CardDescription>
             </CardHeader>
@@ -136,7 +140,7 @@ export function Contact() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 shadow hover:shadow-md font-body text-base py-3 disabled:opacity-70"
+                  className="w-full bg-[#e75480] text-white hover:bg-[#d13c6a] transition-all duration-300 shadow hover:shadow-md font-heading text-base py-3 disabled:opacity-70 font-bold uppercase tracking-widest rounded-full border-none"
                 >
                   {isSubmitting ? (
                     <>

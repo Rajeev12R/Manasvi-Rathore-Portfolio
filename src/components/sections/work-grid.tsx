@@ -141,6 +141,22 @@ export function WorkGrid() {
       className="w-full py-10 md:py-14 bg-background flex items-center justify-center"
     >
       <div className="container px-4 md:px-6">
+        {/* Title Section */}
+        <h2 className="text-3xl text-luxury-heading mb-2 tracking-wider text-center">
+          My Portfolio
+        </h2>
+        <div className="text-sm md:text-base text-pink tracking-widest text-center mb-2">
+          Media Student & Aspiring Journalist
+        </div>
+        <div
+          className="luxury-divider"
+          style={{ background: "var(--color-peach)" }}
+        ></div>
+        <p className="max-w-[900px] mx-auto text-luxury-muted md:text-xl lg:text-base xl:text-xl font-body text-center font-medium mb-8">
+          Explore a collection of my work, showcasing skills in journalism,
+          content creation, and media production across various formats.
+        </p>
+
         {/* Filter Buttons */}
         {categories.length > 1 && (
           <div

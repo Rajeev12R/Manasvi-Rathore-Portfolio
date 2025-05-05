@@ -20,28 +20,41 @@ export default function Home() {
           <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.2)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.2)_1px,transparent_1px)] bg-[size:30px_30px] opacity-30 dark:opacity-20 mask-gradient-soft"></div>
 
           <div className="container z-10 px-4 md:px-6 flex flex-col items-center justify-center">
-            <h1 className="mb-1 text-5xl font-serif font-extrabold tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl fade-in">
-              Manasvi Rathore
-            </h1>
-            <p
-              className="mb-2 text-2xl font-light text-primary sm:text-3xl md:text-4xl slide-up"
-              style={{ animationDelay: "0.1s" }}
-            >
-              Media Student & Aspiring Journalist
-            </p>
-            <p
-              className="mx-auto mb-4 max-w-[700px] text-lg text-muted-foreground md:text-xl slide-up"
-              style={{ animationDelay: "0.2s" }}
-            >
-              Passionate about reporting, editing, and ethical storytelling.
-              Exploring the evolving media landscape with enthusiasm and a drive
-              for impactful communication.
-            </p>
+            <div className="flex flex-col space-y-4 w-full max-w-4xl items-center justify-center mx-auto">
+              <h1
+                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl fade-in text-center mb-0 tracking-widest"
+                style={{
+                  fontFamily: "'Bebas Neue', Arial, sans-serif",
+                  color: "#363535",
+                  fontWeight: 900,
+                  // letterSpacing: "0.04em",
+                  textTransform: "uppercase",
+                }}
+              >
+                <span className="block sm:inline">Manasvi</span>
+                <span className="block sm:inline sm:ml-3">Rathore</span>
+              </h1>
+              <p
+                className="text-sm sm:text-md md:text-lg font-heading text-[#f3c086d1] text-center mb-2 tracking-[.2em] uppercase font-bold"
+                style={{ fontFamily: "'Roboto Condensed', Arial, sans-serif" }}
+              >
+                Media journalist &middot; Fearless &middot; Focused &middot;
+                Everywhere
+              </p>
+              <p
+                className="mx-auto mb-4 max-w-[700px] text-lg md:text-xl font-body text-muted-foreground slide-up text-center"
+                style={{ animationDelay: "0.2s" }}
+              >
+                Passionate about reporting, editing, and ethical storytelling.
+                Exploring the evolving media landscape with enthusiasm and a
+                drive for impactful communication.
+              </p>
+            </div>
             <div className="slide-up" style={{ animationDelay: "0.4s" }}>
               <Button
                 asChild
                 size="lg"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1 mt-4"
               >
                 <Link href="/work">
                   Explore My Work <ArrowRight className="ml-2 h-5 w-5" />

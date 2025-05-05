@@ -1,10 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@700;800&family=Inter:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 240 20% 99%; /* Very light lavender */
+    --background: #fbeee6;
     --foreground: 240 10% 15%; /* Dark grayish blue */
     --card: 0 0% 100%; /* White */
     --card-foreground: 240 10% 15%;
@@ -31,8 +36,20 @@
     --radius: 0.5rem;
 
     /* Font Variables */
-    --font-poppins: 'Poppins', sans-serif;
-    --font-playfair-display: 'Playfair Display', serif;
+    --font-poppins: "Poppins", sans-serif;
+    --font-playfair-display: "Playfair Display", serif;
+    --font-heading: "Roboto Condensed", sans-serif;
+    --font-body: "Inter", sans-serif;
+    --color-heading: #2d3142;
+    --color-body: #343434;
+    --color-accent: #bfa76a;
+    --font-montserrat: "Montserrat", sans-serif;
+    --color-premium-stone: #232323;
+    --color-pink: #e75480;
+    --color-peach: #ffb7b2;
+    --color-beige: #fbeee6;
+    --color-deepred: #a23e48;
+    --color-muted: #6e6e6e;
   }
 
   .dark {
@@ -71,9 +88,22 @@
   body {
     @apply bg-background text-foreground font-body; /* Apply Poppins via variable */
     font-feature-settings: "rlig" 1, "calt" 1;
+    font-family: var(--font-body);
+    color: var(--color-body);
+    background: var(--background);
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-heading; /* Apply Playfair Display via variable */
+    font-family: var(--font-heading);
+    color: var(--color-heading);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.04em;
   }
 
   /* Add smooth scrolling */
@@ -82,33 +112,38 @@
   }
 
   /* Styling for prose content (used in work detail page) */
-   .prose {
+  .prose {
     @apply text-foreground; /* Ensure prose text uses theme color */
-   }
-  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
-     @apply text-foreground font-heading;
-   }
-   .prose strong {
-     @apply text-foreground font-semibold;
-   }
-   .prose a {
-     @apply text-primary hover:text-primary/80 transition-colors;
-   }
-   .prose blockquote {
-     @apply border-l-primary text-muted-foreground;
-   }
-   .prose code {
-     @apply text-primary bg-primary/10 rounded px-1 py-0.5 font-mono text-sm;
-   }
-    .prose pre {
-      @apply bg-muted text-muted-foreground rounded-md p-4 overflow-x-auto;
-    }
-    .prose ul > li::marker {
-        @apply text-primary; /* Style list bullets */
-    }
-    .prose ol > li::marker {
-        @apply text-primary font-medium; /* Style numbered list markers */
-    }
+  }
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6 {
+    @apply text-foreground font-heading;
+  }
+  .prose strong {
+    @apply text-foreground font-semibold;
+  }
+  .prose a {
+    @apply text-primary hover:text-primary/80 transition-colors;
+  }
+  .prose blockquote {
+    @apply border-l-primary text-muted-foreground;
+  }
+  .prose code {
+    @apply text-primary bg-primary/10 rounded px-1 py-0.5 font-mono text-sm;
+  }
+  .prose pre {
+    @apply bg-muted text-muted-foreground rounded-md p-4 overflow-x-auto;
+  }
+  .prose ul > li::marker {
+    @apply text-primary; /* Style list bullets */
+  }
+  .prose ol > li::marker {
+    @apply text-primary font-medium; /* Style numbered list markers */
+  }
 }
 
 /* Add subtle animations & gradient mask */
@@ -117,19 +152,119 @@
     animation: fadeIn 0.6s ease-in-out forwards;
   }
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
   .slide-up {
     animation: slideUp 0.6s ease-out forwards;
   }
   @keyframes slideUp {
-    from { transform: translateY(25px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+      transform: translateY(25px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 
   .mask-gradient-soft {
     mask-image: radial-gradient(circle at center, white 70%, transparent 100%);
-    -webkit-mask-image: radial-gradient(circle at center, white 70%, transparent 100%);
+    -webkit-mask-image: radial-gradient(
+      circle at center,
+      white 70%,
+      transparent 100%
+    );
   }
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.font-premium-heading {
+  font-family: var(--font-montserrat);
+  color: var(--color-premium-stone);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.text-luxury-heading {
+  color: var(--color-heading);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.text-luxury-accent {
+  color: var(--color-accent);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.text-luxury-muted {
+  color: var(--color-muted);
+  font-family: var(--font-body);
+}
+.text-pink {
+  color: var(--color-pink);
+}
+.text-peach {
+  color: var(--color-peach);
+}
+.text-beige {
+  color: var(--color-beige);
+}
+.text-deepred {
+  color: var(--color-deepred);
+}
+.luxury-divider {
+  width: 3rem;
+  height: 0.25rem;
+  background: var(--color-accent);
+  border-radius: 9999px;
+  margin: 1.5rem auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-heading,
+.text-luxury-heading,
+.text-luxury-accent {
+  font-family: var(--font-heading);
 }
