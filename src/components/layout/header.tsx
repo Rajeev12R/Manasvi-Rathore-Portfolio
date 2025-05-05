@@ -1,14 +1,16 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet'; // Import SheetClose
 import { Menu, Feather } from 'lucide-react'; // Feather for logo
 
 export function Header() {
   const navItems = [
-    { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
+    // { label: 'Home', href: '#home' }, // Home is usually handled by the logo link
     { label: 'Work', href: '#work' },
+    { label: 'Voice', href: '#voice' },
+    { label: 'About', href: '#about' },
     { label: 'Summary', href: '#summary' },
+    { label: 'Contact', href: '#contact' },
   ];
 
   return (
@@ -48,13 +50,15 @@ export function Header() {
                   <span className="text-foreground">Verity's Voice</span>
                 </Link>
                 {navItems.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {item.label}
-                  </Link>
+                  // Close sheet on link click for mobile
+                  <SheetClose asChild key={item.label}>
+                     <Link
+                      href={item.href}
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                     >
+                       {item.label}
+                     </Link>
+                  </SheetClose>
                 ))}
               </nav>
             </SheetContent>
