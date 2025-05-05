@@ -4,23 +4,21 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/s
 import { Menu, PenTool } from 'lucide-react'; // Use PenTool or another relevant icon
 
 export function Header() {
-  // Updated nav items reflecting resume structure
+  // Updated nav items reflecting new structure
   const navItems = [
-    { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' }, // Combines Profile/About
-    { label: 'Skills', href: '#skills' },
-    { label: 'Experience', href: '#experience' },
-    { label: 'Education', href: '#education' },
-    // { label: 'Work', href: '#work' }, // Can be combined into Experience or kept separate
-    // { label: 'Voice', href: '#voice' }, // Remove or integrate if relevant samples exist
-    // { label: 'Summary', href: '#summary' }, // Remove AI summary for now
-    { label: 'Contact', href: '#contact' },
+    { label: 'Home', href: '/#home' },
+    { label: 'About', href: '/about' }, // Link to the new About page
+    { label: 'Work', href: '/#featured-work' }, // Link to Featured Work section
+    { label: 'Experience', href: '/#experience' },
+    { label: 'Education', href: '/#education' },
+    { label: 'Achievements', href: '/#achievements' },
+    { label: 'Contact', href: '/#contact' },
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
-        <Link href="#home" className="flex items-center gap-2 transition-opacity hover:opacity-80">
+        <Link href="/#home" className="flex items-center gap-2 transition-opacity hover:opacity-80">
           <PenTool className="h-6 w-6 text-primary" /> {/* Use a different icon */}
           {/* Apply heading font specifically to the name */}
           <span className="font-heading text-lg font-bold text-foreground">Manasvi Rathore</span>
@@ -33,6 +31,8 @@ export function Header() {
               key={item.label}
               href={item.href}
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              // Smooth scroll for homepage links, standard nav for others
+              scroll={item.href.startsWith('/#')}
             >
               {item.label}
             </Link>
@@ -50,7 +50,7 @@ export function Header() {
             </SheetTrigger>
             <SheetContent side="right">
               <nav className="grid gap-6 text-lg font-medium mt-8">
-                <Link href="#home" className="flex items-center gap-2 text-lg font-semibold mb-4">
+                <Link href="/#home" className="flex items-center gap-2 text-lg font-semibold mb-4">
                   <PenTool className="h-6 w-6 text-primary" />
                   <span className="font-heading text-foreground">Manasvi Rathore</span> {/* Heading font */}
                 </Link>
@@ -59,6 +59,7 @@ export function Header() {
                      <Link
                       href={item.href}
                       className="text-muted-foreground hover:text-primary transition-colors"
+                      scroll={item.href.startsWith('/#')}
                      >
                        {item.label}
                      </Link>

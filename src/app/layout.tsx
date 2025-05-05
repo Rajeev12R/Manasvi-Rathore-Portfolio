@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Poppins, Playfair_Display } from 'next/font/google'; // Import new fonts
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
+import { cn } from '@/lib/utils';
 
 // Configure Poppins for body text
 const poppins = Poppins({
@@ -18,8 +19,8 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Manasvi Rathore | Media Student", // Update title
-  description: "Portfolio of Manasvi Rathore, an enthusiastic media student with skills in reporting, editing, and content creation.", // Update description
+  title: "Manasvi Rathore | Media & Journalism Portfolio", // Updated title
+  description: "Explore the portfolio of Manasvi Rathore, a media student showcasing skills in reporting, editing, content creation, and media ethics.", // Updated description
 };
 
 export default function RootLayout({
@@ -30,7 +31,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       {/* Apply font variables to the body */}
-      <body className={`${poppins.variable} ${playfairDisplay.variable} font-body antialiased`}>
+      <body className={cn(
+          "min-h-screen bg-background font-body antialiased",
+           poppins.variable,
+           playfairDisplay.variable
+           )}>
         {children}
         <Toaster />
       </body>

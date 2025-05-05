@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme"; // Import default theme
 
 export default {
     darkMode: ["class"],
@@ -10,13 +11,13 @@ export default {
   theme: {
   	extend: {
   		fontFamily: {
-        // Set Poppins as the primary sans-serif font (body)
-        sans: ["var(--font-poppins)", "sans-serif"],
-        // Set Playfair Display as the serif font (headings)
-        serif: ["var(--font-playfair-display)", "serif"],
-        // Alias for easier use in classNames if needed
-        heading: ["var(--font-playfair-display)", "serif"],
-        body: ["var(--font-poppins)", "sans-serif"],
+        // Set Poppins as the primary sans-serif font (body) using variable
+        sans: ["var(--font-poppins)", ...fontFamily.sans],
+        // Set Playfair Display as the serif font (headings) using variable
+        serif: ["var(--font-playfair-display)", ...fontFamily.serif],
+        // Alias for easier use in classNames
+        heading: ["var(--font-playfair-display)", ...fontFamily.serif],
+        body: ["var(--font-poppins)", ...fontFamily.sans],
       },
   		colors: {
   			background: 'hsl(var(--background))',
@@ -97,20 +98,20 @@ export default {
             '100%': { opacity: '1' },
           },
           'slide-up': {
-            '0%': { transform: 'translateY(20px)', opacity: '0' },
+            '0%': { transform: 'translateY(25px)', opacity: '0' }, // Increased translate Y
             '100%': { transform: 'translateY(0)', opacity: '1' },
           },
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
-        'fade-in': 'fade-in 0.5s ease-in-out forwards',
-        'slide-up': 'slide-up 0.5s ease-out forwards',
+        'fade-in': 'fade-in 0.6s ease-in-out forwards', // Slightly longer duration
+        'slide-up': 'slide-up 0.6s ease-out forwards', // Slightly longer duration
   		}
   	}
   },
    plugins: [
     require("tailwindcss-animate"),
-    require('@tailwindcss/typography'), // Add typography plugin
+    require('@tailwindcss/typography'), // Keep typography plugin
   ],
 } satisfies Config;

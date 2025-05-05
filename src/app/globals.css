@@ -29,6 +29,10 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+
+    /* Font Variables */
+    --font-poppins: 'Poppins', sans-serif;
+    --font-playfair-display: 'Playfair Display', serif;
   }
 
   .dark {
@@ -65,28 +69,67 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground font-body; /* Apply Poppins */
+    @apply bg-background text-foreground font-body; /* Apply Poppins via variable */
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading; /* Apply Playfair Display */
+    @apply font-heading; /* Apply Playfair Display via variable */
   }
+
+  /* Add smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Styling for prose content (used in work detail page) */
+   .prose {
+    @apply text-foreground; /* Ensure prose text uses theme color */
+   }
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+     @apply text-foreground font-heading;
+   }
+   .prose strong {
+     @apply text-foreground font-semibold;
+   }
+   .prose a {
+     @apply text-primary hover:text-primary/80 transition-colors;
+   }
+   .prose blockquote {
+     @apply border-l-primary text-muted-foreground;
+   }
+   .prose code {
+     @apply text-primary bg-primary/10 rounded px-1 py-0.5 font-mono text-sm;
+   }
+    .prose pre {
+      @apply bg-muted text-muted-foreground rounded-md p-4 overflow-x-auto;
+    }
+    .prose ul > li::marker {
+        @apply text-primary; /* Style list bullets */
+    }
+    .prose ol > li::marker {
+        @apply text-primary font-medium; /* Style numbered list markers */
+    }
 }
 
-/* Add subtle animations */
+/* Add subtle animations & gradient mask */
 @layer utilities {
   .fade-in {
-    animation: fadeIn 0.5s ease-in-out;
+    animation: fadeIn 0.6s ease-in-out forwards;
   }
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
   }
   .slide-up {
-    animation: slideUp 0.5s ease-out;
+    animation: slideUp 0.6s ease-out forwards;
   }
   @keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
+    from { transform: translateY(25px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
+  }
+
+  .mask-gradient-soft {
+    mask-image: radial-gradient(circle at center, white 70%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle at center, white 70%, transparent 100%);
   }
 }

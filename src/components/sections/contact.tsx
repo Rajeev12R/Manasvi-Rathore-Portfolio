@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Mail, Linkedin, Twitter, Send, Loader2, Phone, MapPin } from 'lucide-react'; // Added Phone, MapPin
+import { Mail, Linkedin, Send, Loader2, Phone, MapPin } from 'lucide-react'; // Removed Twitter, added Send, Loader2
 import { useToast } from '@/hooks/use-toast';
 
 export function Contact() {
@@ -19,26 +19,31 @@ export function Contact() {
   // --- Placeholder Submit Logic ---
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return; // Prevent double submission
     setIsSubmitting(true);
 
+    // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));
 
     console.log('Form submitted (placeholder):', { name, email, message });
 
+    // Reset form
     setName('');
     setEmail('');
     setMessage('');
     setIsSubmitting(false);
 
+     // Show success toast
      toast({
-      title: "Message Sent!",
-      description: "Thank you for reaching out. Manasvi will get back to you soon.",
-      variant: "default",
+      title: "Message Sent Successfully!",
+      description: "Thank you for reaching out. I'll get back to you as soon as possible.",
+      variant: "default", // Use 'default' or customize further if needed
     });
   };
 
   return (
-    <section id="contact" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/30">
+    // Changed ID to match header link
+    <section id="contact" className="w-full py-16 md:py-24 lg:py-32 bg-gradient-to-b from-secondary/30 to-background">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
            <Mail className="h-12 w-12 text-primary mb-2 slide-up" />
@@ -46,32 +51,33 @@ export function Contact() {
             Get In Touch
           </h2>
           <p className="max-w-[900px] text-muted-foreground md:text-xl lg:text-base xl:text-xl slide-up font-body" style={{ animationDelay: '0.2s' }}>
-            Interested in collaborating, have a question, or just want to connect? Send a message or find me online.
+            Whether you have a question, a collaboration idea, or just want to connect, feel free to reach out. I'm always open to discussing media, journalism, and potential opportunities.
           </p>
         </div>
 
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Contact Form Card */}
-          <Card className="shadow-md border-secondary slide-up" style={{ animationDelay: '0.3s' }}>
+          <Card className="shadow-lg border-secondary slide-up bg-card p-2 md:p-0" style={{ animationDelay: '0.3s' }}>
             <CardHeader>
-              <CardTitle className="text-2xl font-heading text-foreground">Send a Message</CardTitle>
-              <CardDescription className="text-muted-foreground font-body">Fill out the form below.</CardDescription>
+              <CardTitle className="text-2xl font-heading text-foreground">Send a Direct Message</CardTitle>
+              <CardDescription className="text-muted-foreground font-body">Fill out the form below, and I'll respond promptly.</CardDescription>
             </CardHeader>
             <CardContent>
-              <form onSubmit={handleSubmit} className="grid gap-4">
+              <form onSubmit={handleSubmit} className="grid gap-5">
                 <div className="grid gap-2">
-                  <Label htmlFor="name" className="font-body">Name</Label>
+                  <Label htmlFor="name" className="font-body font-medium">Name</Label>
                   <Input
                     id="name"
-                    placeholder="Your Name"
+                    placeholder="Your Full Name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
-                    className="bg-background border-input focus:ring-primary font-body"
+                    className="bg-background border-input focus:ring-primary font-body text-base"
+                    aria-label="Your Name"
                   />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="email" className="font-body">Email</Label>
+                  <Label htmlFor="email" className="font-body font-medium">Email Address</Label>
                   <Input
                     id="email"
                     type="email"
@@ -79,26 +85,28 @@ export function Contact() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="bg-background border-input focus:ring-primary font-body"
+                    className="bg-background border-input focus:ring-primary font-body text-base"
+                     aria-label="Your Email Address"
                   />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="message" className="font-body">Message</Label>
+                  <Label htmlFor="message" className="font-body font-medium">Message</Label>
                   <Textarea
                     id="message"
-                    placeholder="Your message..."
+                    placeholder="Type your message here..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     required
-                    rows={4}
-                    className="bg-background border-input focus:ring-primary font-body"
+                    rows={5} // Increased rows for more space
+                    className="bg-background border-input focus:ring-primary font-body text-base"
+                    aria-label="Your Message"
                   />
                 </div>
-                <Button type="submit" disabled={isSubmitting} className="w-full bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 shadow hover:shadow-md font-body">
+                <Button type="submit" disabled={isSubmitting} className="w-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 shadow hover:shadow-md font-body text-base py-3 disabled:opacity-70">
                    {isSubmitting ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Sending...
+                      Sending... Please Wait
                     </>
                   ) : (
                     <>
@@ -111,39 +119,35 @@ export function Contact() {
           </Card>
 
           {/* Contact Info & Socials */}
-          <div className="space-y-8 flex flex-col justify-center slide-up" style={{ animationDelay: '0.4s' }}>
+          <div className="space-y-10 flex flex-col justify-center slide-up" style={{ animationDelay: '0.4s' }}>
              <div>
-                <h3 className="text-xl font-heading font-semibold text-foreground mb-3">Contact Information</h3>
-                 <div className="space-y-2 text-muted-foreground font-body">
-                     <a href="tel:+6260320012" className="flex items-center gap-3 hover:text-primary transition-colors">
-                         <Phone className="h-5 w-5 text-primary/80" />
-                         <span>+626-032-0012</span>
+                <h3 className="text-2xl font-heading font-semibold text-foreground mb-4 border-b border-primary/30 pb-2">Contact Information</h3>
+                 <div className="space-y-3 text-muted-foreground font-body text-base md:text-lg">
+                     <a href="tel:+916260320012" className="flex items-center gap-3 group hover:text-primary transition-colors">
+                         <Phone className="h-5 w-5 text-primary/80 group-hover:scale-110 transition-transform" />
+                         <span>+91 6260320012</span>
                      </a>
-                     <a href="mailto:jiya21rathore@gmail.com" className="flex items-center gap-3 hover:text-primary transition-colors">
-                        <Mail className="h-5 w-5 text-primary/80" />
+                     <a href="mailto:jiya21rathore@gmail.com" className="flex items-center gap-3 group hover:text-primary transition-colors">
+                        <Mail className="h-5 w-5 text-primary/80 group-hover:scale-110 transition-transform" />
                         <span>jiya21rathore@gmail.com</span>
                      </a>
-                      <div className="flex items-center gap-3">
-                        <MapPin className="h-5 w-5 text-primary/80" />
-                        <span>22, Chitrabagh Colony, near Khandwa Naka, Indore</span>
+                      <div className="flex items-start gap-3"> {/* Use items-start for potential multi-line address */}
+                        <MapPin className="h-5 w-5 text-primary/80 mt-1 flex-shrink-0" />
+                        <span>22, Chitrabagh Colony, Near Khandwa Naka, Indore, Madhya Pradesh, India</span>
                       </div>
                  </div>
              </div>
 
              <div>
-                <h3 className="text-xl font-heading font-semibold text-foreground mb-3">Connect Online</h3>
+                <h3 className="text-2xl font-heading font-semibold text-foreground mb-4 border-b border-primary/30 pb-2">Connect Online</h3>
                 <div className="flex space-x-4">
-                  <Button variant="outline" size="icon" asChild className="text-primary border-primary hover:bg-primary/10">
+                  {/* LinkedIn Button */}
+                  <Button variant="outline" size="icon" asChild className="text-primary border-primary hover:bg-primary/10 hover:scale-110 transform transition-all duration-300 rounded-full w-12 h-12">
                     <a href="https://www.linkedin.com/in/jiya-rathore-068aaa311/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
-                      <Linkedin className="h-5 w-5" />
+                      <Linkedin className="h-6 w-6" />
                     </a>
                   </Button>
-                   {/* Add Twitter/X if applicable */}
-                   {/* <Button variant="outline" size="icon" asChild className="text-primary border-primary hover:bg-primary/10">
-                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile">
-                      <Twitter className="h-5 w-5" />
-                    </a>
-                  </Button> */}
+                   {/* Add other relevant social links here if needed */}
                 </div>
              </div>
           </div>
