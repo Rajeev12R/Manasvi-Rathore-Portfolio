@@ -1,5 +1,6 @@
 'use client'; // Keep as client component for potential future interactions
 
+import React, { use } from 'react'; // Import use from React
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Button } from '@/components/ui/button';
@@ -126,8 +127,15 @@ const getWorkItem = (slug: string): WorkDetail | undefined => {
 
 // --- Component ---
 
-export default function WorkDetailPage({ params }: { params: { slug: string } }) {
-  const workItem = getWorkItem(params.slug);
+// Type for the props, especially the params which might be a Promise
+type WorkDetailPageProps = {
+  params: { slug: string } | Promise<{ slug: string }>;
+};
+
+export default function WorkDetailPage({ params }: WorkDetailPageProps) {
+  // Use React.use to resolve the params if it's a Promise
+  const resolvedParams = use(params);
+  const workItem = getWorkItem(resolvedParams.slug);
 
   // If the work item is not found, display a 404 page
   if (!workItem) {
