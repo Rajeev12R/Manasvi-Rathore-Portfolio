@@ -20,7 +20,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.2)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.2)_1px,transparent_1px)] bg-[size:30px_30px] opacity-30 dark:opacity-20 mask-gradient-soft"></div>
 
           <div className="container z-10 px-4 md:px-6 flex flex-col items-center justify-center">
-            <div className="flex flex-col space-y-4 w-full max-w-4xl items-center justify-center mx-auto">
+            <div className="flex flex-col gap-4 w-full max-w-4xl items-center justify-center mx-auto">
               <h1
                 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl fade-in text-center mb-0 tracking-widest"
                 style={{
@@ -35,11 +35,10 @@ export default function Home() {
                 <span className="block sm:inline sm:ml-3">Rathore</span>
               </h1>
               <p
-                className="text-sm sm:text-md md:text-lg font-heading text-[#f3c086d1] text-center mb-2 tracking-[.2em] uppercase font-bold"
-                style={{ fontFamily: "'Roboto Condensed', Arial, sans-serif" }}
+                className="text-sm sm:text-md md:text-lg font-heading text-[#b56d76] text-center mb-2 -mt-4 tracking-[.2em] font-bold"
+                style={{ fontFamily: "'Roboto', Arial, sans-serif" }}
               >
-                Media journalist &middot; Fearless &middot; Focused &middot;
-                Everywhere
+                Media Journalist. Relentless in Creating Headlines.
               </p>
               <p
                 className="mx-auto mb-4 max-w-[700px] text-lg md:text-xl font-body text-muted-foreground slide-up text-center"
