@@ -6,7 +6,7 @@ import { Achievements } from "@/components/sections/achievements"
 import { Separator } from "@/components/ui/separator"
 import { Award, BookOpen, Briefcase, Heart, Star, Users } from "lucide-react"
 import Link from "next/link"
-
+import jiya from "@/assets/jiya.jpg"
 export default function AboutPage() {
   return (
     <div className="flex min-h-screen flex-col">
@@ -23,7 +23,7 @@ export default function AboutPage() {
           <div className="mb-8 flex flex-col items-center relative">
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-secondary opacity-70 blur-xl animate-pulse"></div>
             <img
-              src="https://picsum.photos/seed/about-manasvi/400/400"
+              src={jiya.src}
               alt="Manasvi Rathore portrait"
               className="relative w-48 h-48 md:w-64 md:h-64 rounded-full shadow-2xl border-4 border-background object-cover z-10"
             />
