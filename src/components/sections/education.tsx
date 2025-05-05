@@ -33,8 +33,8 @@ const educationHistory: EducationItem[] = [
 
 export function Education() {
   return (
-    // Changed ID to match header link
-    <section id="education" className="w-full py-16 md:py-24 lg:py-32 bg-secondary/30">
+    // Changed ID to match the detailed section on About page ('education-detail')
+    <section id="education-detail" className="w-full py-16 md:py-24 lg:py-32 bg-secondary/30">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <GraduationCap className="h-12 w-12 text-primary mb-2 slide-up" />

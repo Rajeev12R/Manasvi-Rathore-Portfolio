@@ -1,10 +1,7 @@
 import Image from 'next/image';
 import { Header } from '@/components/layout/header';
-import { AboutMe } from '@/components/sections/about-me'; // Will be shortened
-import { Experience } from '@/components/sections/experience';
-import { Education } from '@/components/sections/education';
-import { FeaturedWork } from '@/components/sections/featured-work'; // Renamed/New component
-import { Achievements } from '@/components/sections/achievements';
+import { AboutMe } from '@/components/sections/about-me';
+import { FeaturedWork } from '@/components/sections/featured-work';
 import { Contact } from '@/components/sections/contact';
 import { Footer } from '@/components/layout/footer';
 import { Button } from '@/components/ui/button';
@@ -50,8 +47,9 @@ export default function Home() {
                 </span>
              </div>
             <div className="slide-up" style={{ animationDelay: '0.4s' }}>
+              {/* Updated button to link to Featured Work section */}
               <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1">
-                <a href="#about">Discover More <ArrowDown className="ml-2 h-5 w-5" /></a>
+                <a href="#featured-work">Explore My Work <ArrowDown className="ml-2 h-5 w-5" /></a>
               </Button>
             </div>
           </div>
@@ -63,15 +61,6 @@ export default function Home() {
         {/* Featured Work Section */}
         <FeaturedWork />
 
-        {/* Experience Section */}
-        <Experience />
-
-        {/* Education Section */}
-        <Education />
-
-         {/* Achievements Section */}
-        <Achievements />
-
         {/* Contact Section */}
         <Contact />
 
@@ -79,23 +68,4 @@ export default function Home() {
       <Footer />
     </div>
   );
-}
-
-// Add gradient mask style - Moved to globals.css is better, but keeping here for now if needed
-const styles = `
-.mask-gradient-soft {
-  mask-image: radial-gradient(circle at center, white 70%, transparent 100%);
-  -webkit-mask-image: radial-gradient(circle at center, white 70%, transparent 100%);
-}
-`;
-
-// Inject styles - Ensure this runs only client-side if needed, or move to globals.css
-if (typeof window !== 'undefined') {
-  let styleSheet = document.getElementById('gradient-mask-style');
-  if (!styleSheet) {
-    styleSheet = document.createElement("style");
-    styleSheet.id = 'gradient-mask-style';
-    styleSheet.innerText = styles;
-    document.head.appendChild(styleSheet);
-  }
 }

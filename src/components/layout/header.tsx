@@ -4,14 +4,12 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/s
 import { Menu, PenTool } from 'lucide-react'; // Use PenTool or another relevant icon
 
 export function Header() {
-  // Updated nav items reflecting new structure
+  // Updated nav items removing links to sections moved to About page
   const navItems = [
     { label: 'Home', href: '/#home' },
     { label: 'About', href: '/about' }, // Link to the new About page
     { label: 'Work', href: '/#featured-work' }, // Link to Featured Work section
-    { label: 'Experience', href: '/#experience' },
-    { label: 'Education', href: '/#education' },
-    { label: 'Achievements', href: '/#achievements' },
+    // Removed Experience, Education, Achievements
     { label: 'Contact', href: '/#contact' },
   ];
 

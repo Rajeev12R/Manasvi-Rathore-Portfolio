@@ -64,8 +64,8 @@ const experiences: ExperienceItem[] = [
 
 export function Experience() {
   return (
-    // Changed ID to match header link
-    <section id="experience" className="w-full py-16 md:py-24 lg:py-32 bg-background">
+    // Changed ID to match the detailed section on About page ('experience-detail')
+    <section id="experience-detail" className="w-full py-16 md:py-24 lg:py-32 bg-background">
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
           <Briefcase className="h-12 w-12 text-primary mb-2 slide-up" />
