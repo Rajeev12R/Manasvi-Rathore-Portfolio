@@ -1,13 +1,25 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google'; // Using Inter as a clean, modern font
+import { Poppins, Playfair_Display } from 'next/font/google'; // Import new fonts
 import './globals.css';
-import { Toaster } from '@/components/ui/toaster'; // Import Toaster
+import { Toaster } from '@/components/ui/toaster';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' }); // Correctly configure Inter
+// Configure Poppins for body text
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'], // Include necessary weights
+  variable: '--font-poppins',
+});
+
+// Configure Playfair Display for headings
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['700', '800'], // Include necessary weights for headings
+  variable: '--font-playfair-display',
+});
 
 export const metadata: Metadata = {
-  title: "Verity's Voice", // Update title
-  description: "Professional portfolio of an aspiring journalist.", // Update description
+  title: "Manasvi Rathore | Media Student", // Update title
+  description: "Portfolio of Manasvi Rathore, an enthusiastic media student with skills in reporting, editing, and content creation.", // Update description
 };
 
 export default function RootLayout({
@@ -16,10 +28,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning> {/* Added suppressHydrationWarning */}
-      <body className={`${inter.variable} font-sans antialiased`}> {/* Use Inter font variable */}
+    <html lang="en" suppressHydrationWarning>
+      {/* Apply font variables to the body */}
+      <body className={`${poppins.variable} ${playfairDisplay.variable} font-body antialiased`}>
         {children}
-        <Toaster /> {/* Add Toaster here */}
+        <Toaster />
       </body>
     </html>
   );

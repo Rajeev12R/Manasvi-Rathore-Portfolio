@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Award, BookOpen, Edit3 } from 'lucide-react'; // Minimalist icons
+import { User, Edit3, BookOpen, Award } from 'lucide-react'; // Keep icons relevant
 
 export function AboutMe() {
   return (
@@ -8,54 +8,32 @@ export function AboutMe() {
       <div className="container px-4 md:px-6">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div className="space-y-6">
-            <h2 className="text-3xl font-bold tracking-tighter text-foreground sm:text-4xl md:text-5xl slide-up">
-              About Verity
+            {/* Use heading font for the section title */}
+            <h2 className="text-3xl font-heading font-bold tracking-tighter text-foreground sm:text-4xl md:text-5xl slide-up">
+              About Me
             </h2>
-            <p className="text-muted-foreground md:text-lg slide-up" style={{ animationDelay: '0.1s' }}>
-              Hi, I'm Verity, an aspiring journalist driven by a passion for uncovering truth and crafting compelling narratives. My journey into journalism began with a desire to understand the world and share impactful stories. I specialize in investigative reporting and feature writing, always striving for accuracy, depth, and clarity.
+            {/* Use body font for paragraphs */}
+            <p className="text-muted-foreground md:text-lg slide-up font-body" style={{ animationDelay: '0.1s' }}>
+              Enthusiastic about journalism, with a keen interest in news reporting, editing, and media ethics. I strive to produce well-researched and accurate content while continuously developing my understanding of media dynamics and audience engagement.
             </p>
-            <p className="text-muted-foreground md:text-lg slide-up" style={{ animationDelay: '0.2s' }}>
-              My approach combines meticulous research with empathetic storytelling, aiming to connect readers with the subjects and issues that shape our lives. I believe in the power of journalism to inform, inspire, and foster meaningful dialogue.
+            <p className="text-muted-foreground md:text-lg slide-up font-body" style={{ animationDelay: '0.2s' }}>
+              Adaptable and eager to learn, I aim to contribute effectively to dynamic media platforms in an evolving industry. My interests span content creation, political analysis, current affairs, and the intersection of technology and media innovation.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 slide-up" style={{ animationDelay: '0.3s' }}>
-                <SkillCard icon={Edit3} title="Writing & Editing" description="Crafting clear, concise, and engaging articles." />
-                <SkillCard icon={BookOpen} title="Research" description="Thorough investigation and fact-checking." />
-                <SkillCard icon={Award} title="Storytelling" description="Weaving narratives that resonate and inform." />
-            </div>
+            {/* Removed SkillCards as skills have their own section now */}
           </div>
           <div className="flex items-center justify-center slide-up" style={{ animationDelay: '0.2s' }}>
             <Image
-              src="https://picsum.photos/seed/journalist-headshot/500/500"
-              alt="Verity - Journalist Headshot"
+              // Consider using a more specific image seed or a real photo URL
+              src="https://picsum.photos/seed/manasvi-rathore/500/500"
+              alt="Manasvi Rathore - Media Student" // Updated alt text
               width={450}
               height={450}
               className="rounded-full shadow-lg object-cover aspect-square border-4 border-secondary transition-transform duration-300 hover:scale-105"
-              data-ai-hint="professional woman headshot"
+              data-ai-hint="professional indian woman student headshot" // Updated hint
             />
           </div>
         </div>
       </div>
     </section>
   );
-}
-
-
-interface SkillCardProps {
-    icon: React.ElementType;
-    title: string;
-    description: string;
-}
-
-function SkillCard({ icon: Icon, title, description }: SkillCardProps) {
-    return (
-        <Card className="bg-secondary/50 border-secondary hover:shadow-md transition-shadow">
-            <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                <Icon className="h-8 w-8 text-primary" />
-                <CardTitle className="text-lg">{title}</CardTitle>
-            </CardHeader>
-            <CardContent>
-                <p className="text-sm text-muted-foreground">{description}</p>
-            </CardContent>
-        </Card>
-    );
 }

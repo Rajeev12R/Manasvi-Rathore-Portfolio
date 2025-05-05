@@ -10,7 +10,13 @@ export default {
   theme: {
   	extend: {
   		fontFamily: {
-        sans: ["var(--font-inter)", "sans-serif"], // Ensure Inter is primary sans font
+        // Set Poppins as the primary sans-serif font (body)
+        sans: ["var(--font-poppins)", "sans-serif"],
+        // Set Playfair Display as the serif font (headings)
+        serif: ["var(--font-playfair-display)", "serif"],
+        // Alias for easier use in classNames if needed
+        heading: ["var(--font-playfair-display)", "serif"],
+        body: ["var(--font-poppins)", "sans-serif"],
       },
   		colors: {
   			background: 'hsl(var(--background))',
