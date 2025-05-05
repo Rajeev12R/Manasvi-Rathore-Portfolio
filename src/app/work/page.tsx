@@ -9,7 +9,7 @@ export default function WorkPage() {
       <Header />
       <main className="flex-1">
         {/* Title Section */}
-        <section className="w-full py-16 md:py-24 lg:py-32 bg-gradient-to-b from-background via-secondary/10 to-background">
+        <section className="w-full py-8 md:py-8 lg:py-10 bg-gradient-to-b from-background via-secondary/10 to-background">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <FileText className="h-12 w-12 text-primary mb-2 slide-up" />
