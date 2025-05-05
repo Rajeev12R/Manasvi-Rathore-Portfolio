@@ -1,11 +1,9 @@
-import Image from 'next/image';
 import { Header } from '@/components/layout/header';
 import { AboutMe } from '@/components/sections/about-me';
-import { FeaturedWork } from '@/components/sections/featured-work';
 import { Contact } from '@/components/sections/contact';
 import { Footer } from '@/components/layout/footer';
 import { Button } from '@/components/ui/button';
-import { ArrowDown, Mail, Phone, MapPin } from 'lucide-react';
+import { ArrowRight, Mail, Phone, MapPin } from 'lucide-react'; // Changed ArrowDown to ArrowRight for consistency
 import Link from 'next/link';
 
 export default function Home() {
@@ -47,9 +45,11 @@ export default function Home() {
                 </span>
              </div>
             <div className="slide-up" style={{ animationDelay: '0.4s' }}>
-              {/* Updated button to link to Featured Work section */}
+              {/* Updated button to link to the new Work page */}
               <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 transition-colors duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1">
-                <a href="#featured-work">Explore My Work <ArrowDown className="ml-2 h-5 w-5" /></a>
+                <Link href="/work">
+                  Explore My Work <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
               </Button>
             </div>
           </div>
@@ -58,8 +58,7 @@ export default function Home() {
         {/* About Me Section (Shortened) */}
         <AboutMe />
 
-        {/* Featured Work Section */}
-        <FeaturedWork />
+        {/* Featured Work Section is removed from here */}
 
         {/* Contact Section */}
         <Contact />

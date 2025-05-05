@@ -4,7 +4,7 @@ import React, { use } from 'react'; // Import use from React
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, FileText, Video, MicVocal, Calendar, Tag } from 'lucide-react';
+import { ArrowLeft, FileText, Video, MicVocal, Calendar, Tag, Newspaper, Radio, ExternalLink } from 'lucide-react'; // Added Newspaper, Radio, ExternalLink
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation'; // Import notFound for handling missing slugs
@@ -16,7 +16,7 @@ import { notFound } from 'next/navigation'; // Import notFound for handling miss
 interface WorkDetail {
   slug: string;
   title: string;
-  category: 'Article' | 'Video' | 'Voice';
+  category: 'Article' | 'Video' | 'Voice' | 'Report' | 'Radio'; // Added Report, Radio categories
   date: string; // e.g., "August 10, 2024"
   tags: string[];
   imageUrl: string;
@@ -25,11 +25,12 @@ interface WorkDetail {
   externalLink?: string; // Optional link for video/audio embeds or source
 }
 
+// Expanded list to match work-grid.tsx
 const allWorkItems: WorkDetail[] = [
   {
     slug: 'water-quality-report',
     title: 'Investigative Report on Local Water Quality',
-    category: 'Article',
+    category: 'Report', // Updated category
     date: 'August 10, 2024',
     tags: ['Investigation', 'Environment', 'Local News', 'Indore'],
     imageUrl: 'https://picsum.photos/seed/water-report-detail/1200/600',
@@ -117,7 +118,89 @@ The landscape of journalism has been irrevocably transformed by technology. This
 This piece incorporates insights from industry experts and analysis of current trends to provide a comprehensive overview of this dynamic field.
     `,
   },
-  // Add other work items here...
+   {
+    slug: 'myfm-radio-voiceover', // Example slug
+    title: 'MY FM Radio Voice-Over Contribution',
+    category: 'Radio',
+    date: 'June 2024',
+    tags: ['Voice-Over', 'Radio', 'Event', 'Volunteer'],
+    imageUrl: 'https://picsum.photos/seed/myfm-radio-detail/1200/600',
+    imageHint: 'radio studio microphone sound waves broadcast event',
+    content: `
+## Voice for the Airwaves: CT Topper Event
+
+During the 'CT Topper Event' organized by My FM 94.3 in June 2024, I had the opportunity to contribute a child's voice-over for a radio segment. This experience allowed me to apply my vocal skills in a professional broadcasting environment.
+
+*(Audio snippet or link would be ideal here)*
+    `,
+     externalLink: '#', // Placeholder link if audio is available elsewhere
+   },
+   {
+    slug: 'community-event-report', // Example slug
+    title: 'News Report: Local Community Initiative',
+    category: 'Report',
+    date: 'July 28, 2024',
+    tags: ['News Reporting', 'Video Production', 'Community', 'Local News'],
+    imageUrl: 'https://picsum.photos/seed/community-event-detail/1200/600',
+    imageHint: 'people meeting community center presentation reporting camera',
+    content: `
+## Covering the [Event Name] Community Initiative
+
+As part of my internship with The Publicat, I reported on the recent [Event Name] community initiative. This involved:
+
+*   **News Writing:** Crafting informative articles detailing the event's purpose and impact.
+*   **Video Production:** Producing short news video segments, including anchoring and voice-overs, to effectively communicate key highlights.
+
+This project enhanced my skills in multimedia news delivery and community reporting.
+
+*(Link to article or video could be placed here)*
+    `,
+    externalLink: '#', // Placeholder
+   },
+   {
+     slug: 'podcast-media-ethics', // Example slug
+     title: 'Podcast Episode: Media Ethics Today',
+     category: 'Voice',
+     date: 'September 5, 2024',
+     tags: ['Podcast', 'Media Ethics', 'Discussion', 'Hosting'],
+     imageUrl: 'https://picsum.photos/seed/podcast-ethics-detail/1200/600',
+     imageHint: 'two people podcasting microphones headphones audio mixer discussion',
+     content: `
+## Exploring Modern Media Ethics
+
+This podcast episode delves into the complex ethical landscape confronting journalists and media professionals today. As host and producer, I guided a discussion covering topics such as:
+
+*   The impact of social media on journalistic standards.
+*   Navigating source confidentiality in the digital age.
+*   The challenges of objectivity vs. advocacy journalism.
+
+*(Link to the podcast episode would be placed here)*
+     `,
+     externalLink: '#', // Placeholder link
+   },
+   {
+     slug: 'video-interview-local-artist', // Example slug
+     title: 'Video Interview: Local Artist Profile',
+     category: 'Video',
+     date: 'October 12, 2024',
+     tags: ['Video Production', 'Interview', 'Arts', 'Local Culture'],
+     imageUrl: 'https://picsum.photos/seed/artist-interview-detail/1200/600',
+     imageHint: 'artist studio interview camera lights painting sculpture',
+     content: `
+## Spotlight on [Artist Name]
+
+This video profile features an interview with local artist [Artist Name], exploring their creative process, inspirations, and recent works.
+
+The production involved:
+
+*   **Interviewing:** Conducting an engaging conversation to draw out the artist's story.
+*   **Filming:** Capturing visuals of the artist and their work in their studio environment.
+*   **Editing:** Assembling the footage into a concise and compelling narrative.
+
+*(Embedded video player or link would go here)*
+     `,
+     externalLink: '#', // Placeholder link
+   },
 ];
 
 // Helper function to get work item by slug
@@ -132,6 +215,7 @@ type WorkDetailPageProps = {
   params: { slug: string } | Promise<{ slug: string }>;
 };
 
+
 export default function WorkDetailPage({ params }: WorkDetailPageProps) {
   // Use React.use to resolve the params if it's a Promise
   const resolvedParams = use(params);
@@ -142,20 +226,24 @@ export default function WorkDetailPage({ params }: WorkDetailPageProps) {
     notFound();
   }
 
+  // Map category to icon
   const categoryIcon =
     workItem.category === 'Article' ? FileText :
     workItem.category === 'Video' ? Video :
-    MicVocal; // Default or Voice icon
+    workItem.category === 'Voice' ? MicVocal :
+    workItem.category === 'Report' ? Newspaper :
+    workItem.category === 'Radio' ? Radio :
+    FileText; // Default icon
 
   return (
     <div className="flex min-h-screen flex-col bg-gradient-to-b from-background via-secondary/5 to-background">
       <Header />
       <main className="flex-1 py-16 md:py-24">
         <div className="container px-4 md:px-6 max-w-4xl mx-auto">
-          {/* Back Button */}
+          {/* Back Button - Updated link to /work */}
           <Button asChild variant="outline" className="mb-8 group transition-all hover:bg-primary/10 border-primary text-primary font-body slide-up">
-            <Link href="/#featured-work">
-              <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" /> Back to Work
+            <Link href="/work">
+              <ArrowLeft className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1" /> Back to Portfolio
             </Link>
           </Button>
 
@@ -180,28 +268,28 @@ export default function WorkDetailPage({ params }: WorkDetailPageProps) {
             </div>
           </header>
 
-          {/* Image / Video Placeholder */}
+          {/* Image / Video / Audio Placeholder */}
           <div className="mb-10 rounded-lg overflow-hidden shadow-lg slide-up" style={{ animationDelay: '0.2s' }}>
-            {workItem.category === 'Video' && workItem.externalLink ? (
+            {workItem.category === 'Video' && workItem.externalLink && workItem.externalLink !== '#' ? (
                <div className="aspect-video bg-muted flex items-center justify-center">
                  {/* Basic Video Embed Placeholder */}
                   <iframe
                     width="100%"
                     height="100%"
-                    src={workItem.externalLink.replace('watch?v=', 'embed/')} // Basic YouTube embed conversion
+                    src={workItem.externalLink.includes('youtube.com') ? workItem.externalLink.replace('watch?v=', 'embed/') : workItem.externalLink} // Basic YouTube embed conversion
                     title={workItem.title}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     className="border-0"
                   ></iframe>
                </div>
-            ) : workItem.category === 'Voice' && workItem.externalLink ? (
-                 <div className="aspect-video bg-muted flex items-center justify-center p-8">
+            ) : (workItem.category === 'Voice' || workItem.category === 'Radio') && workItem.externalLink && workItem.externalLink !== '#' ? (
+                 <div className="bg-muted flex items-center justify-center p-8 rounded-lg">
                      {/* Basic Audio Placeholder */}
                      <audio controls className="w-full">
                        <source src={workItem.externalLink} type="audio/mpeg" /> {/* Adjust type if needed */}
                        Your browser does not support the audio element.
-                      <a href={workItem.externalLink} target="_blank" rel="noopener noreferrer" className="text-primary underline">Listen Here</a>
+                      <a href={workItem.externalLink} target="_blank" rel="noopener noreferrer" className="text-primary underline ml-2">Listen Here</a>
                      </audio>
                  </div>
             ) : (
@@ -220,17 +308,15 @@ export default function WorkDetailPage({ params }: WorkDetailPageProps) {
           {/* Content Area */}
           <article className="prose prose-lg dark:prose-invert max-w-none font-body text-foreground slide-up" style={{ animationDelay: '0.3s' }}>
             {/* Render Markdown or HTML content here */}
-            {/* For simplicity, we'll just use dangerouslySetInnerHTML for the placeholder */}
             {/* In a real app, use react-markdown or similar */}
             <div dangerouslySetInnerHTML={{ __html: workItem.content.replace(/\n/g, '<br />') }} />
-             {/* Add paragraphs, headings, lists etc. based on actual content structure */}
 
-             {/* Link for non-article types if applicable */}
-             {(workItem.category === 'Video' || workItem.category === 'Voice') && workItem.externalLink && (
+             {/* Link for non-article types if applicable and link exists */}
+             {(workItem.category === 'Video' || workItem.category === 'Voice' || workItem.category === 'Radio') && workItem.externalLink && workItem.externalLink !== '#' && (
                 <p className="mt-8">
                     <Button asChild variant="outline" className="border-accent text-accent-foreground hover:bg-accent/10">
                         <a href={workItem.externalLink} target="_blank" rel="noopener noreferrer">
-                           View Original {workItem.category} <ArrowLeft className="ml-2 h-4 w-4 rotate-[-45deg]" />
+                           View Original {workItem.category} <ExternalLink className="ml-2 h-4 w-4" /> {/* Use ExternalLink icon */}
                         </a>
                     </Button>
                 </p>

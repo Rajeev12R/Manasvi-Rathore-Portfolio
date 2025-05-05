@@ -8,7 +8,7 @@ export function Header() {
   const navItems = [
     { label: 'Home', href: '/#home' },
     { label: 'About', href: '/about' }, // Link to the new About page
-    { label: 'Work', href: '/#featured-work' }, // Link to Featured Work section
+    { label: 'Work', href: '/work' }, // Link to the new Work page
     // Removed Experience, Education, Achievements
     { label: 'Contact', href: '/#contact' },
   ];
@@ -28,7 +28,7 @@ export function Header() {
             <Link
               key={item.label}
               href={item.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+              className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary font-body" // Added font-body
               // Smooth scroll for homepage links, standard nav for others
               scroll={item.href.startsWith('/#')}
             >
@@ -47,16 +47,16 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
-              <nav className="grid gap-6 text-lg font-medium mt-8">
-                <Link href="/#home" className="flex items-center gap-2 text-lg font-semibold mb-4">
+              <Link href="/#home" className="flex items-center gap-2 text-lg font-semibold mb-4">
                   <PenTool className="h-6 w-6 text-primary" />
                   <span className="font-heading text-foreground">Manasvi Rathore</span> {/* Heading font */}
-                </Link>
+              </Link>
+              <nav className="grid gap-6 text-lg font-medium mt-8">
                 {navItems.map((item) => (
                   <SheetClose asChild key={item.label}>
                      <Link
                       href={item.href}
-                      className="text-muted-foreground hover:text-primary transition-colors"
+                      className="text-muted-foreground hover:text-primary transition-colors font-body" // Added font-body
                       scroll={item.href.startsWith('/#')}
                      >
                        {item.label}
