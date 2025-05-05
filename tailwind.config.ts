@@ -9,6 +9,9 @@ export default {
   ],
   theme: {
   	extend: {
+  		fontFamily: {
+        sans: ["var(--font-inter)", "sans-serif"], // Ensure Inter is primary sans font
+      },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -82,13 +85,26 @@ export default {
   				to: {
   					height: '0'
   				}
-  			}
+  			},
+         'fade-in': {
+            '0%': { opacity: '0' },
+            '100%': { opacity: '1' },
+          },
+          'slide-up': {
+            '0%': { transform: 'translateY(20px)', opacity: '0' },
+            '100%': { transform: 'translateY(0)', opacity: '1' },
+          },
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
+  			'accordion-up': 'accordion-up 0.2s ease-out',
+        'fade-in': 'fade-in 0.5s ease-in-out forwards',
+        'slide-up': 'slide-up 0.5s ease-out forwards',
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+   plugins: [
+    require("tailwindcss-animate"),
+    require('@tailwindcss/typography'), // Add typography plugin
+  ],
 } satisfies Config;
